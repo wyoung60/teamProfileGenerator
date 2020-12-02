@@ -91,8 +91,10 @@ function engineerInquire() {
       case "Intern":
         internInquire();
         break;
+      case "No more employees to add.":
+        render(employeeArray);
       default:
-        return;
+        break;
     }
   });
 }
@@ -113,8 +115,11 @@ function internInquire() {
       case "Intern":
         internInquire();
         break;
+      case "No more employees to add.":
+        let html = render(employeeArray);
+        writeHTML(html);
       default:
-        return;
+        break;
     }
   });
 }
@@ -150,13 +155,20 @@ function storeEmployees(employee) {
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
-render(employeeArray);
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
-
+function writeHTML(html) {
+  fs.writeFile(outputPath, html, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Creating html");
+    }
+  });
+}
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
 // employee type.
