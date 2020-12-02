@@ -120,21 +120,37 @@ function internInquire() {
 }
 
 function storeEmployees(employee) {
-  let newEmployee = new Manager(
-    employee.name,
-    employee.id,
-    employee.email,
-    employee.officeNumber
-  );
+  if (employee.role === "Manager") {
+    var newEmployee = new Manager(
+      employee.name,
+      employee.id,
+      employee.email,
+      employee.officeNumber
+    );
+  } else if (employee.role === "Engineer") {
+    var newEmployee = new Engineer(
+      employee.name,
+      employee.id,
+      employee.email,
+      employee.github
+    );
+  } else {
+    var newEmployee = new Intern(
+      employee.name,
+      employee.id,
+      employee.email,
+      employee.school
+    );
+  }
   employeeArray.push(newEmployee);
   employeeID++;
-  console.log(employeeArray);
 }
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
+render(employeeArray);
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
