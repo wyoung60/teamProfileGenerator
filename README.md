@@ -38,7 +38,6 @@ Use npm test command to test repo.
 
 ## Links
 
-https://wyoung60.github.io/teamProfileGenerator </br>
 https://github.com/wyoung60/teamProfileGenerator
 
 ## Questions
