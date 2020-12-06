@@ -12,6 +12,8 @@ CLI that takes in information about the user's team and creates a HTML reference
 
 - [Usage](#usage)
 
+- [Screenshot](#screenshot)
+
 - [License](#license)
 
 - [Tests](#tests)
@@ -27,6 +29,10 @@ Install necessary dependencies with npm i command.
 ## Usage
 
 This is command line application. Follow prompts to create team.html file.
+
+## Screenshot
+
+<img src = "./Images/Screenshot.JPG">
 
 ## License
 
