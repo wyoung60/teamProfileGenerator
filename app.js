@@ -16,20 +16,23 @@ let employeeArray = [];
 let employeeInfo = {};
 
 //Array of questions for inquirer
-const employeeQuestions = [
-  { message: "What is the employee's name? ", name: "name" },
-  { message: "What is the employee's email address? ", name: "email" },
-  { message: "Employee role unique question", name: "uniqueQuestion" },
-  {
-    type: "list",
-    message: "Select the appropriate role of the new employee: ",
-    name: "role",
-    choices: ["Engineer", "Intern", "No more employees to add."],
-  },
-];
 
 //Function to prompt employee questions.  Takes in the employee's role specific question and role
 function newEmployeeInquire(employeeSpecificQuestion, role) {
+  const employeeQuestions = [
+    { message: `What is the ${role.toLowerCase()}'s name? `, name: "name" },
+    {
+      message: `What is the ${role.toLowerCase()}'s email address? `,
+      name: "email",
+    },
+    { message: "Employee role unique question", name: "uniqueQuestion" },
+    {
+      type: "list",
+      message: "Select the appropriate role of the new employee: ",
+      name: "role",
+      choices: ["Engineer", "Intern", "No more employees to add."],
+    },
+  ];
   //Inserts employee's role specific question
   employeeQuestions[2].message = employeeSpecificQuestion;
   //Inquire prompts questions
@@ -84,12 +87,12 @@ function storeEmployees(employee, nextEmployee) {
   switch (nextEmployee) {
     case "Engineer":
       newEmployeeInquire(
-        "What is the employee's github username? ",
+        "What is the engineer's github username? ",
         "Engineer"
       );
       break;
     case "Intern":
-      newEmployeeInquire("What school does the employee attend? ", "Intern");
+      newEmployeeInquire("What school does the intern attend? ", "Intern");
       break;
     //Case to call render function.
     case "No more employees to add.":
@@ -115,4 +118,4 @@ function writeHTML(html) {
 }
 
 //Kicks off first set of question for the manager.
-newEmployeeInquire("What is the employee's office number? ", "Manager");
+newEmployeeInquire("What is the manager's office number? ", "Manager");
